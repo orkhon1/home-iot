@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESP32-S3 Мэдрэгчийн самбар</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>ESP32-S3 Мэдрэгчийн самбар</h1>
+    <div class="status"><span id="dot" class="dot"></span><span id="st">Холбогдож байна...</span></div>
+  </header>
+
+  <div class="grid">
+    <div class="card"><div class="label">Температур</div><div class="value"><span id="temp">--</span><span class="unit"> °C</span></div></div>
+    <div class="card"><div class="label">Чийгшил</div><div class="value"><span id="hum">--</span><span class="unit"> %</span></div></div>
+    <div class="card"><div class="label">Дууны түвшин (raw)</div><div class="value" id="sound">--</div><div class="sub">0 – 4095</div></div>
+    <div class="card"><div class="label">Агаарын чанар MQ135 (raw)</div><div class="value" id="air">--</div><div class="sub" id="airNote">0 – 4095</div></div>
+  </div>
+
+  <div class="card msg">
+    <form id="oled-form">
+      <label class="label" for="oled-input">Шинэ мессеж</label>
+      <div class="msg-controls">
+        <input id="oled-input" name="lcdMsg" type="text" required maxlength="120" autocomplete="off">
+        <button type="submit">Илгээх</button>
+      </div>
+      <div class="status" id="oled-status" role="status"></div>
+    </form>
+  </div>
+
+  <div class="card chart">
+    <div class="legend">
+      <span style="--c:#ef4444">Температур</span>
+      <span style="--c:#3b82f6">Чийгшил</span>
+    </div>
+    <canvas id="c1"></canvas>
+    <div class="legend" style="margin-top:12px">
+      <span style="--c:#f59e0b">Дуу</span>
+      <span style="--c:#10b981">Агаар</span>
+    </div>
+    <canvas id="c2"></canvas>
+  </div>
+  <div class="status" style="margin-top:10px">Сүүлд шинэчлэгдсэн: <span id="upd">--</span></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
